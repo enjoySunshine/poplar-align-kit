@@ -3,6 +3,7 @@ export * from './matrix/groupD8';
 export * from './matrix/Matrix';
 export * from './misc/const';
 export * from './misc/getOrientationOfPoints';
+export * from './misc/getStrokeOuterWidth';
 export * from './misc/pow2';
 export * from './misc/Size';
 export * from './misc/squaredDistanceToLineSegment';

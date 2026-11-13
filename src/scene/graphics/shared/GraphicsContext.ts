@@ -2,6 +2,7 @@
 import EventEmitter from 'eventemitter3';
 import { Color, type ColorSource } from '../../../color/Color';
 import { Matrix } from '../../../maths/matrix/Matrix';
+import { getStrokeOuterWidth } from '../../../maths/misc/getStrokeOuterWidth';
 import { Point } from '../../../maths/point/Point';
 import { type GCable, type GCData } from '../../../rendering/renderers/shared/GCSystem';
 import { Texture } from '../../../rendering/renderers/shared/texture/Texture';
@@ -1119,7 +1120,7 @@ export class GraphicsContext extends EventEmitter<{
 
                 const alignment = data.style.alignment;
 
-                let outerPadding = (data.style.width * (1 - alignment));
+                let outerPadding = getStrokeOuterWidth(data.style.width, alignment);
 
                 if (data.style.join === 'miter')
                 {

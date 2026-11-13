@@ -1,4 +1,5 @@
 import { type SHAPE_PRIMITIVE } from '../misc/const';
+import { getStrokeWidths } from '../misc/getStrokeOuterWidth';
 import { Rectangle } from './Rectangle';
 
 import type { ShapePrimitive } from './ShapePrimitive';
@@ -354,8 +355,7 @@ export class RoundedRectangle implements ShapePrimitive
     {
         const { x, y, width, height, radius } = this;
 
-        const strokeWidthOuter = strokeWidth * (1 - alignment);
-        const strokeWidthInner = strokeWidth - strokeWidthOuter;
+        const [strokeWidthOuter, strokeWidthInner] = getStrokeWidths(strokeWidth, alignment);
 
         const innerX = x + radius;
         const innerY = y + radius;

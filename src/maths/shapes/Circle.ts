@@ -1,3 +1,4 @@
+import { getStrokeWidths } from '../misc/getStrokeOuterWidth';
 import { Rectangle } from './Rectangle';
 
 import type { SHAPE_PRIMITIVE } from '../misc/const';
@@ -203,10 +204,10 @@ export class Circle implements ShapePrimitive
         const dx = (this.x - x);
         const dy = (this.y - y);
         const radius = this.radius;
-        const outerWidth = (1 - alignment) * width;
+        const [outerWidth, innerWidth] = getStrokeWidths(width, alignment);
         const distance = Math.sqrt((dx * dx) + (dy * dy));
 
-        return (distance <= radius + outerWidth && distance > radius - (width - outerWidth));
+        return (distance <= radius + outerWidth && distance > radius - innerWidth);
     }
 
     /**

@@ -1,3 +1,4 @@
+import { getStrokeWidths } from '../misc/getStrokeOuterWidth';
 import { Rectangle } from './Rectangle';
 
 import type { ShapePrimitive } from './ShapePrimitive';
@@ -207,8 +208,7 @@ export class Ellipse implements ShapePrimitive
             return false;
         }
 
-        const strokeOuterWidth = strokeWidth * (1 - alignment);
-        const strokeInnerWidth = strokeWidth - strokeOuterWidth;
+        const [strokeOuterWidth, strokeInnerWidth] = getStrokeWidths(strokeWidth, alignment);
 
         const innerHorizontal = halfWidth - strokeInnerWidth;
         const innerVertical = halfHeight - strokeInnerWidth;

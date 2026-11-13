@@ -1,4 +1,5 @@
 // import { SHAPES } from '../const';
+import { getStrokeWidths } from '../misc/getStrokeOuterWidth';
 import { Point } from '../point/Point';
 
 import type { Bounds } from '../../scene/container/bounds/Bounds';
@@ -430,8 +431,7 @@ export class Rectangle implements ShapePrimitive
         const _x = this.x;
         const _y = this.y;
 
-        const strokeWidthOuter = strokeWidth * (1 - alignment);
-        const strokeWidthInner = strokeWidth - strokeWidthOuter;
+        const [strokeWidthOuter, strokeWidthInner] = getStrokeWidths(strokeWidth, alignment);
 
         const outerLeft = _x - strokeWidthOuter;
         const outerRight = _x + width + strokeWidthOuter;
